@@ -28,7 +28,6 @@ end
 local function send_to_gpt_with_prompt(prompt)
   local text = get_visual_selection()
   text = string.gsub(text, '"', '\"')
-  print("Text: " .. text)
   local cmd = gpt_command .. " " .. " \"" .. prompt ..  " ".. text .. "\""
   vim.cmd('vsplit')
   vim.cmd('terminal ' .. cmd)
