@@ -20,7 +20,7 @@ function get_visual_selection()
   local start_line, start_col, end_line, end_col = visual_selection_range()
   local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
   -- merge all lines into one string
-  local text = table.concat(lines, "")
+  local text = table.concat(lines, " ")
   return text
 end
 
@@ -46,37 +46,37 @@ end
 
 function M.send_to_gpt_refactor()
   print("refactoring, please wait...")
-  send_to_gpt_with_prompt("please help me refactor the following code:")
+  send_to_gpt_with_prompt("refactor this code:")
 end
 
 function M.send_to_gpt_comment()
   print("commenting, please wait...")
-  send_to_gpt_with_prompt("please help me comment the following code:")
+  send_to_gpt_with_prompt("comment this code:")
 end
 
 function M.send_to_gpt_document()
   print("documenting, please wait...")
-  send_to_gpt_with_prompt("please help me document the following code:")
+  send_to_gpt_with_prompt("document this code:")
 end
 
 function M.send_to_gpt_test()
   print("testing, please wait...")
-  send_to_gpt_with_prompt("please help me write a test for the following code:")
+  send_to_gpt_with_prompt("write a test for this code:")
 end
 
 function M.send_to_gpt_debug()
   print("debugging, please wait...")
-  send_to_gpt_with_prompt("please help me debug the following code:")
+  send_to_gpt_with_prompt("debug this code:")
 end
 
 function M.send_to_gpt_explain()
   print("explaining, please wait...")
-  send_to_gpt_with_prompt("please help me explain the following code:")
+  send_to_gpt_with_prompt("explain this code:")
 end
 
 function M.send_to_gpt_example()
   print("writing an example, please wait...")
-  send_to_gpt_with_prompt("please help me write an example for the following code:")
+  send_to_gpt_with_prompt("write an example for this code:")
 end
 
 function M.send_to_gpt_custom()

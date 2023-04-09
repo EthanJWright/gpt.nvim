@@ -30,6 +30,9 @@ Usage
 Most of the functions are designed to be called when you have code visually
 selected.
 
+***note*** if you are getting a max_tokens error you can try flushing your
+conversation
+
 Use the following whichkey keybindings to send code to the chatbot:
 
     local visual_mappings = {
