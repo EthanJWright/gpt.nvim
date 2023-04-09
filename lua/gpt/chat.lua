@@ -16,8 +16,8 @@ local function visual_selection_range()
   end
 end
 
-function get_visual_selection()
-  local start_line, start_col, end_line, end_col = visual_selection_range()
+local function get_visual_selection()
+  local start_line, _, end_line, _ = visual_selection_range()
   local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
   -- merge all lines into one string
   local text = table.concat(lines, " ")
