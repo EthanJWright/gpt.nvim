@@ -18,7 +18,7 @@ end
 
 function get_visual_selection()
   local start_line, start_col, end_line, end_col = visual_selection_range()
-  local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
+  local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
   -- merge all lines into one string
   local text = table.concat(lines, " ")
   return text
@@ -28,6 +28,7 @@ end
 local function send_to_gpt_with_prompt(prompt)
   local text = get_visual_selection()
   text = string.gsub(text, '"', '\"')
+  print("Text: " .. text)
   local cmd = gpt_command .. " " .. " \"" .. prompt ..  " ".. text .. "\""
   vim.cmd('vsplit')
   vim.cmd('terminal ' .. cmd)
