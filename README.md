@@ -27,6 +27,9 @@ The only configuration option is the `gpt_command`, which should be set to the c
 Usage
 -----
 
+Most of the functions are designed to be called when you have code visually
+selected.
+
 Use the following whichkey keybindings to send code to the chatbot:
 
     local visual_mappings = {
