@@ -1,6 +1,6 @@
 local M = {}
 
-local gpt_command = "g"
+local gpt_command = "chatgpt_cli"
 
 function M.set_gpt_command(command)
   gpt_command = command
