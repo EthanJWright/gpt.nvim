@@ -19,7 +19,8 @@ Setup
 Configure the plugin by calling the `setup()` function:
 
     require('gpt.chat').setup {
-      gpt_command = "chatgpt_cli <YOUR-API-KEY-HERE>",
+      gpt_command = "chatgpt_cli <YOUR-API-KEY-HERE>", -- cli to interact with chat gpt
+      pipe_to = "bat --language=md --style=plain", -- format responses from chat gpt
     }
 
 The only configuration option is the `gpt_command`, which should be set to the command to run to invoke the OpenAI GPT-3 chatbot. This command should include any required API keys or authentication tokens.
