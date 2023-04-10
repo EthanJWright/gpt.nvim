@@ -31,7 +31,12 @@ end
 
 local function send_to_gpt_with_prompt(prompt)
 	local text = get_visual_selection()
+	-- add markdown code blocks to increase the likelihood gpt will respond in
+	-- kind
 	text = string.gsub(text, "'", "'")
+	local filetype = vim.bo.filetype
+	text = "```" .. filetype .. text .. "```"
+
 	local cmd = gpt_command .. " " .. " '" .. prompt .. " " .. text .. "'"
 	if pipe_to ~= nil then
 		cmd = cmd .. " | " .. pipe_to
@@ -55,7 +60,7 @@ local PROMPT_SUFFIX = ""
 
 local function build_prompt(prompt)
 	local filetype = vim.bo.filetype
-	return PROPT_PREFIX .. "```" .. filetype .. prompt .. "```" .. PROMPT_SUFFIX
+	return PROPT_PREFIX .. prompt .. PROMPT_SUFFIX
 end
 
 function M.send_to_gpt_refactor()
