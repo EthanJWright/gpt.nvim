@@ -35,7 +35,7 @@ local function send_to_gpt_with_prompt(prompt)
 	-- kind
 	text = string.gsub(text, "'", "'")
 	local filetype = vim.bo.filetype
-	text = "```" .. filetype .. text .. "```"
+	text = "```" .. filetype .. " " .. text .. "```"
 
 	local cmd = gpt_command .. " " .. " '" .. prompt .. " " .. text .. "'"
 	if pipe_to ~= nil then
@@ -59,7 +59,6 @@ local PROPT_PREFIX = ""
 local PROMPT_SUFFIX = ""
 
 local function build_prompt(prompt)
-	local filetype = vim.bo.filetype
 	return PROPT_PREFIX .. prompt .. PROMPT_SUFFIX
 end
 
