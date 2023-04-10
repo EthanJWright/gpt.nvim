@@ -50,44 +50,52 @@ function M.send_to_gpt()
 	send_to_gpt_with_prompt("")
 end
 
+local PROPT_PREFIX = ""
+local PROMPT_SUFFIX = ""
+
+local function build_prompt(prompt)
+	local filetype = vim.bo.filetype
+	return PROPT_PREFIX .. "```" .. filetype .. prompt .. "```" .. PROMPT_SUFFIX
+end
+
 function M.send_to_gpt_refactor()
 	print("refactoring, please wait...")
-	send_to_gpt_with_prompt("refactor this code:")
+	send_to_gpt_with_prompt(build_prompt("refactor this code "))
 end
 
 function M.send_to_gpt_comment()
 	print("commenting, please wait...")
-	send_to_gpt_with_prompt("comment this code:")
+	send_to_gpt_with_prompt(build_prompt("comment this code "))
 end
 
 function M.send_to_gpt_document()
 	print("documenting, please wait...")
-	send_to_gpt_with_prompt("document this code:")
+	send_to_gpt_with_prompt(build_prompt("document this code "))
 end
 
 function M.send_to_gpt_test()
 	print("testing, please wait...")
-	send_to_gpt_with_prompt("write a test for this code:")
+	send_to_gpt_with_prompt(build_prompt("write a test for this code "))
 end
 
 function M.send_to_gpt_debug()
 	print("debugging, please wait...")
-	send_to_gpt_with_prompt("debug this code:")
+	send_to_gpt_with_prompt(build_prompt("debug this code "))
 end
 
 function M.send_to_gpt_explain()
 	print("explaining, please wait...")
-	send_to_gpt_with_prompt("explain this code:")
+	send_to_gpt_with_prompt(build_prompt("explain this code "))
 end
 
 function M.send_to_gpt_example()
 	print("writing an example, please wait...")
-	send_to_gpt_with_prompt("write an example for this code:")
+	send_to_gpt_with_prompt(build_prompt("write an example for this code "))
 end
 
 function M.send_to_gpt_custom()
 	local prompt = vim.fn.input("prompt: ")
-	send_to_gpt_with_prompt(prompt)
+	send_to_gpt_with_prompt(build_prompt(prompt))
 end
 
 function M.setup(opts)
